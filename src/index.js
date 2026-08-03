@@ -1,6 +1,7 @@
 const express = require('express');
 const { schedulePost, getQueue } = require('./scheduler');
 const { setupWebhookRoutes } = require('./webhook');
+const { setupSenseVitWebhookRoutes } = require('./sensevitWebhook');
 
 const app = express();
 app.use(express.json());
@@ -65,12 +66,14 @@ app.get('/health', (req, res) => {
     service: 'social-publisher',
     buffer_configured: !!BUFFER_API_KEY,
     webhook_configured: !!IG_ACCESS_TOKEN,
-    webhook_url: '/webhook/instagram'
+    webhook_url: '/webhook/instagram',
+    sensevit_store_installed_webhook_url: '/webhooks/sensevit/store-installed'
   });
 });
 
 // Webhook routes para Instagram DM automation
 setupWebhookRoutes(app);
+setupSenseVitWebhookRoutes(app);
 
 app.listen(PORT, () => {
   console.log(`🚀 social-publisher running on port ${PORT}`);
