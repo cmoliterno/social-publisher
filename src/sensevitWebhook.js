@@ -3,7 +3,7 @@ const { spawn } = require('child_process');
 
 const DEFAULT_ALLOWED_TARGETS = '+5511941618090';
 const DEFAULT_SENDER = '+5511978869828';
-const DEFAULT_GATEWAY_URL = 'ws://openclaw:50448';
+const DEFAULT_GATEWAY_URL = 'ws://127.0.0.1:50448';
 const DEFAULT_WRAPPER_PATH = '/data/repos/openclaw/scripts/whatsapp-send.sh';
 const MAX_MESSAGE_LENGTH = 2000;
 
